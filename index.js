@@ -1,13 +1,19 @@
 const express = require("express");
 const dotenv = require('dotenv');
 const unirest = require('unirest');
+const crypto = require('crypto');
 dotenv.config();
+
+function generateUniqueId(){
+    return crypto.randomBytes(10).toString('HEX');
+ }
 
 const app = express();
 const routes = express.Router();
 
 routes.get('/',(req, res)=>{
-      return res.status(200).send("<a href='https://github.com/login/oauth/authorize?client_id=2d4ee6c929deee561821&redirect_uri=http%3A%2F%2Flocalhost%3A3333%2Fuser&scope=repo%20user&state=somethingUnguessable&allow_signup=false' target='_blank'>here</a>");
+      let state = generateUniqueId()
+      return res.status(200).send(`<a href='https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri={YOUR_CALLBACK_URL}&scope=repo%20user&state=${state}&allow_signup=false' target='_blank'>here</a>`);
 })
 
 
