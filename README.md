@@ -1,6 +1,6 @@
 # To get a token you must follow a few steps
 ## Creat an OAuth app
- - Follow the instructions on the documentation
+ - Follow the instructions on the documentation to create your OAuth App.
  - On your app create a redirection to:
 `https://github.com/login/oauth/authorize?client_id=YOUR_APP_CLIENT_ID&redirect_uri=YOUR_CALLBACK_URL&scope=THE_ACCESS_SCOPE&state=YOUR_STRING&allow_signup=true`
 The **YOUR_CALLBACK_URL** is the url off your app site, on this case it will be *http://localhost:3333/user*
